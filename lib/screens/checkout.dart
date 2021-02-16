@@ -143,9 +143,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                           onTap:(){
                                             print("sofia");
                                             setState(() {
-
-                                              Firestore.instance.runTransaction((transaction)async{
-                                                await transaction.set(Firestore.instance.collection("orders").document(),{
+                                              FirebaseFirestore.instance.runTransaction((transaction)async{
+                                                await transaction.set(FirebaseFirestore.instance.collection("orders").doc(),{
                                                   'name': cart[index].name,
                                                   'table':_currentValue
                                                 });

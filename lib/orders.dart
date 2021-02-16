@@ -38,7 +38,7 @@ class _OrdersPageState extends State<OrdersPage> {
             ),
             Container(
               width: MediaQuery.of(context).size.width*0.8,
-
+              color: Colors.orange,
               child: Container(
                 height: 650,
                 width: 500,
@@ -55,7 +55,7 @@ class _OrdersPageState extends State<OrdersPage> {
                               children: <Widget>[
                                 Container(
                                   height: 100,
-                                  width: 500,
+                                  width: 440,
                                   child:Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: <Widget>[

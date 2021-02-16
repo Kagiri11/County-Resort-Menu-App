@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:menuapp/orders.dart';
+import 'package:menuapp/screens/styles.dart';
 
 
 class Admin extends StatefulWidget {
@@ -42,7 +43,9 @@ class _AdminState extends State<Admin> {
                     Text("Enter Password"),
                     TextFormField(
                       validator:(input){
+                        // ignore: missing_return
                         if(input.length<6){
+                          // ignore: missing_return
                           return "Please enter a password that is more than six characters";
                         }
                       } ,
@@ -71,8 +74,8 @@ class _AdminState extends State<Admin> {
     if(formState.validate()){
       formState.save();
       try {
-        AuthResult user= await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email,password: _password);
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>OrdersPage()));
+        var user= await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email,password: _password);
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>StylesPage()));
       } catch (e) {
         print(e.message);
       }

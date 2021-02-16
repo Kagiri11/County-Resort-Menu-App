@@ -1,27 +1,44 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:menuapp/screens/admin.dart';
+import 'package:menuapp/screens/cart.dart';
+import 'package:menuapp/screens/dashboard.dart';
+import 'package:menuapp/screens/notifications.dart';
+import 'package:menuapp/screens/sigu.dart';
+import 'package:menuapp/screens/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:menuapp/login.dart';
-import 'package:menuapp/models/servingsmodel.dart';
-import 'package:menuapp/orders.dart';
-import 'package:menuapp/screens/checkout.dart';
-import 'package:menuapp/screens/servingspage.dart';
+import 'package:menuapp/signup.dart';
 import 'package:splashscreen/splashscreen.dart';
-
 
 void main(){
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(54,2,89,1)
+          primarySwatch: Colors.grey,
+
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primaryColor: Colors.grey[500]
       ),
-      home: OrdersPage(),
+      home:Splash(),
+      // routes: {
+      //   StylesPage.id:(context)=>StylesPage(),
+      // },
     );
   }
 }
@@ -34,66 +51,23 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 5,
-
-      backgroundColor: Color.fromRGBO(54,2,89,1),
-      title: Text("Welcome To County\nResort",style: TextStyle(fontSize: 25,fontFamily: "Raleway",color: Colors.white),textAlign: TextAlign.center,),
-      loaderColor: Colors.white,
-      loadingText: Text("Better Hotel Service",style: TextStyle(fontFamily: "Raleway",color: Colors.white),),
-      navigateAfterSeconds: HomePage(),
+    return FutureBuilder(
+      // Initialize FlutterFire
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return StylesPage();
+        }
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Notify();
+        }
+        // Otherwise, show something whilst waiting for initialization to complete
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }
-
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List<ServingsModel> cart=[];
-  int sum;
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("County Resort Menu",style: TextStyle(fontFamily: "Quicksand Regular"),),
-          actions: <Widget>[
-            InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin()));
-              },
-                child: Icon(Icons.adjust)
-            ),
-          ],
-          bottom: TabBar(
-          tabs: <Widget>[
-            Tab(icon: Icon(Icons.menu),),
-            Tab(icon: Icon(Icons.account_balance_wallet),),
-          ],
-          ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            ServingsPage((selectedFood){
-              setState(() {
-                cart.add(selectedFood);
-                sum=0;
-                cart.forEach((item){
-                  sum+=item.price;
-                });
-              });
-            }),
-            CheckoutPage(cart,sum),
-
-          ],
-        ),
-      ),
-    );
-  }
-}
-

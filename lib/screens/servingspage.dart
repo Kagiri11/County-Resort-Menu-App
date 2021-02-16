@@ -16,17 +16,11 @@ class _ServingsPageState extends State<ServingsPage> {
   _ServingsPageState(this._valueSetter);
 
   List<ServingsModel> servings=[
-    ServingsModel("F-chicken","Closed fried chicken","assets/images/friedchicken.jpg",250),
-    ServingsModel("A-Cookies","American Baked Cookies","assets/images/cookies.jpg",150),
-    ServingsModel("F-chicken","BBQ fried steak","assets/images/friedsteak.jpg",200),
-    ServingsModel("SI-Ribs","Special Indian Ribs","assets/images/ribs.jpg",250),
+    ServingsModel("F-chicken","Closed fried chicken","assets/images/friedchicken.jpg",250,"14"),
 
   ];
   List<ServingsModel> drinks=[
-    ServingsModel("Soup","Doctor's Soup","assets/images/soup.jpg",100),
-    ServingsModel("NH-Tea","Neighbour Hood Tea","assets/images/tea.jpg",100),
-    ServingsModel("Bread n Soup","Bread's Friend Soup","assets/images/tomatosoup.jpg",100),
-    ServingsModel("Soup","Doctor's Soup","assets/images/soup.jpg",100),
+    ServingsModel("Soup","Doctor's Soup","assets/images/soup.jpg",100,"2 hrs"),
   ];
   final snackBar=SnackBar(content: Text("item has been added",style: TextStyle(color: Colors.white),));
   @override
