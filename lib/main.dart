@@ -3,15 +3,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:menuapp/screens/admin.dart';
 import 'package:menuapp/screens/cart.dart';
 import 'package:menuapp/screens/dashboard.dart';
+import 'package:menuapp/screens/mpesa.dart';
 import 'package:menuapp/screens/notifications.dart';
 import 'package:menuapp/screens/sigu.dart';
+import 'package:menuapp/screens/slider.dart';
 import 'package:menuapp/screens/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:menuapp/login.dart';
 import 'package:menuapp/signup.dart';
+import 'package:mpesa_flutter_plugin/mpesa_flutter_plugin.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 void main(){
+  String kConsumerKey ="6IDkqOaygzAjjTgYLIDNCPmqzV1GcBFh";
+String kConsumerSecret ="21TGSOeAyAvHjN9Q";
+MpesaFlutterPlugin.setConsumerKey(kConsumerKey);
+  MpesaFlutterPlugin.setConsumerSecret(kConsumerSecret);
+
   runApp(MyApp());
 }
 
@@ -61,7 +69,7 @@ class _SplashState extends State<Splash> {
         }
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return Notify();
+          return SignUP();
         }
         // Otherwise, show something whilst waiting for initialization to complete
         return Center(

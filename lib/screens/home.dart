@@ -18,10 +18,10 @@ class _HomePageState extends State<HomePage> {
   _HomePageState(this._valueSetter);
 
   static List<Design> designs = [
-    Design("Monalisa", "assets/images/monalisa.jpg", "Kshs 1200", "40 minutes"),
-    Design("Braids", "assets/images/braids.jpg", "Kshs 1200", "40 minutes"),
-    Design("Rvssian", "assets/images/style.jpg", "Kshs 1200", "40 minutes"),
-    Design("Abuja", "assets/images/style2.jpg", "Kshs 1200", "40 minutes")
+    Design("Monalisa", "assets/images/monalisa.jpg", "1", "40 minutes"),
+    Design("Braids", "assets/images/braids.jpg", "1200", "40 minutes"),
+    Design("Rvssian", "assets/images/style.jpg", "1200", "40 minutes"),
+    Design("Abuja", "assets/images/style2.jpg", "1200", "40 minutes")
   ];
   static List<Design> manicure = [
     Design("Shut Afro", "assets/images/des2.jpeg", "Kshs 1200", "40 minutes"),
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                 height: 30,
                 child: SizedBox(
                   height: 20,
-                  child: Text("Favourite Designs"),
+                  child: Text("Latest Designs"),
                 ),
               ),
               Container(
@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, snapshot){
                     return ListView.builder(
                     padding: EdgeInsets.only(left: 20, right: 10),
-                    itemCount: manicure.length,
+                    itemCount: snapshot.data.documents.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       DocumentSnapshot cont=snapshot.data.documents[index];

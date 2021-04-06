@@ -24,16 +24,23 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_datetime_picker:
+  flutter_countdown_timer:
   file_picker:
+  firebase_auth:
+  image_picker:
+  numberpicker:
   cloud_firestore:
   firebase_core:
   firebase_storage:
-  image_picker:
-  numberpicker:
   splashscreen:
   flutter_speed_dial:
+  datetime_picker_formfield:
   polygon_clipper:
-  firebase_auth:
+  flutter_slidable:
+  mpesa:
+  date_format:
+  mpesa_flutter_plugin:
+  square_in_app_payments:
   flutter_local_notifications:
 
 dev_dependencies:

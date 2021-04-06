@@ -29,7 +29,7 @@ class AuthService {
         });
 
         // Navigator.pushReplacementNamed(context, HomePage.id);
-        Navigator.pushReplacementNamed(context, StylesPage.id, arguments: {"name": name, "email": email});
+        // Navigator.pushReplacementNamed(context, StylesPage.id);
         print(name);
         print(email);
       }
@@ -61,7 +61,7 @@ class AuthService {
       );
       if (user != null) {
         print(user);
-        Navigator.pushReplacementNamed(context, StylesPage.id);
+        // Navigator.pushReplacementNamed(context, StylesPage.id);
       }
     } catch (e) {
       print(e.message);

@@ -236,9 +236,9 @@ class _SignUPState extends State<SignUP> {
                             fontFamily: 'ProductSans-Bold',
                           ),
                         ),
-                        FlatButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, Login.id);
+                        InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                             },
                             child: Text(
                               'Login',

@@ -2,6 +2,7 @@ import 'package:menuapp/screens/admindrawer.dart';
 import 'package:menuapp/screens/cart.dart';
 import 'package:menuapp/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:menuapp/screens/notifications.dart';
 
 class Design {
   String style;
@@ -74,7 +75,7 @@ class _StylesPageState extends State<StylesPage> {
         });
       }),
       CartPage(_cart),
-      Text("Notifications")
+      Notify()
     ];
     return Scaffold(
       drawer: AdminDrawer(),
@@ -92,8 +93,8 @@ class _StylesPageState extends State<StylesPage> {
             title: Text("Appointment"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_active),
-            title: Text("Notifications"),
+            icon: Icon(Icons.history),
+            title: Text("History"),
           ),
         ],
       ),
